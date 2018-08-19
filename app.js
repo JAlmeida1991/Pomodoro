@@ -1,33 +1,27 @@
+// Work session element nodes:
 const timer = document.querySelector(".clock span");
 const play = document.querySelector(".play");
 const pause = document.querySelector(".pause");
 const reset = document.querySelector(".reset");
-
+// Session length element nodes:
 const sessionLength = document.querySelector(".session-length span");
-const sessionMinus = document.querySelector(
-  ".session-length button:nth-of-type(1)"
-);
-const sessionAdd = document.querySelector(
-  ".session-length button:nth-of-type(2)"
-);
-
+const sessionMinus = document.querySelector(".session-minus");
+const sessionAdd = document.querySelector(".session-add");
+// Break length element nodes:
 const breakLength = document.querySelector(".break-length span");
-const breakMinus = document.querySelector(
-  ".break-length button:nth-of-type(1)"
-);
-const breakAdd = document.querySelector(".break-length button:nth-of-type(2)");
+const breakMinus = document.querySelector(".break-minus");
+const breakAdd = document.querySelector(".break-add");
 
 // AUDIO FOR TRANSITION
 let audio = new Audio("Bepp-beep/Bepp-beep.mp3");
 
-// NEEDED TO ASSIGN SET TIMEOUT TO VARIABLE IN ORDER TO CLEAR IT
+// NEEDED TO ASSIGN SET TIMEOUT TO AS GLOBAL VARIABLE IN ORDER TO CLEAR IT
 let interval;
 
 // WITHOUT ISON USER IS POSSIBLE TO SPEED TIME UP BY CLICKING PLAY MORE THAN ONCE
 let isOn = false;
 
 // use parseInt(sessionLength.textContent); && parseInt(breakLength.textContent) to reset
-
 class Timer {
   constructor(totalSeconds) {
     this.totalSeconds = totalSeconds;
@@ -40,6 +34,15 @@ class Timer {
     let seconds = (this.totalSeconds % 3600) % 60;
     return checkSingleDigit(seconds);
   }
+  static init() {
+    countdown.totalSeconds = 1500;
+    breakCountdown.totalSeconds = 300;
+    currentTime = countdown;
+    stopCountdown();
+    displayTime(timer);
+    displayTime(sessionLength);
+    displayCountDown(breakLength);
+  }
 }
 
 const countdown = new Timer(1500);
@@ -50,13 +53,14 @@ const breakCountdown = new Timer(300);
 
 let currentTime;
 
-init();
+Timer.init();
 
+// Event handlers:
 play.addEventListener("click", startCountdown);
 
 pause.addEventListener("click", stopCountdown);
 
-reset.addEventListener("click", init);
+reset.addEventListener("click", Timer.init);
 
 sessionMinus.addEventListener("click", function() {
   if (countdown.totalSeconds > 60 && !isOn) {
@@ -67,7 +71,8 @@ sessionMinus.addEventListener("click", function() {
 });
 
 sessionAdd.addEventListener("click", function() {
-  if (countdown.totalSeconds < 3600 && !isOn) {
+  // If total seconds is set to less than or equal to 3600, user is possible to increment / decrement time if timer value... e.g. 59:40 => +60
+  if (countdown.totalSeconds < 3541 && !isOn) {
     countdown.totalSeconds += 60;
     displayTime(sessionLength);
     displayTime(timer);
@@ -79,18 +84,21 @@ sessionAdd.addEventListener("click", function() {
 breakMinus.addEventListener("click", function() {
   if (breakCountdown.totalSeconds > 60 && !isOn) {
     breakCountdown.totalSeconds -= 60;
-    displayTime(breakLength);
+    displayCountDown(breakLength);
     // This will override what is shown from display Time
   }
 });
 
 breakAdd.addEventListener("click", function() {
-  if (breakCountdown.totalSeconds < 3600 && !isOn) {
+  // If total seconds is set to less than or equal to 3600, user is possible to increment / decrement time if timer value... e.g. 59:40 => +60
+  if (breakCountdown.totalSeconds < 3541 && !isOn) {
     breakCountdown.totalSeconds += 60;
-    displayTime(breakLength);
+    displayCountDown(breakLength);
     displaySixty(breakCountdown, breakLength);
   }
 });
+
+// Application logic:
 
 function countdownInterval() {
   currentTime.totalSeconds--;
@@ -108,16 +116,20 @@ function countdownInterval() {
 }
 
 function displayTime(time) {
-  if (time === breakLength) {
-    return (time.textContent = `${breakCountdown.minutes()}:${breakCountdown.seconds()}`);
+  if (time === sessionLength) {
+    time.textContent = `${countdown.minutes()}:00`;
+  } else {
+    time.textContent = `${countdown.minutes()}:${countdown.seconds()}`;
   }
-  return (time.textContent = `${countdown.minutes()}:${countdown.seconds()}`);
 }
 
 function displayCountDown(time) {
-  return (time.textContent = `${breakCountdown.minutes()}:${breakCountdown.seconds()}`);
+  if (time === breakLength) {
+    time.textContent = `${breakCountdown.minutes()}:00`;
+  } else {
+    time.textContent = `${breakCountdown.minutes()}:${breakCountdown.seconds()}`;
+  }
 }
-
 /*IF NUMBER ONLY HAS 1 DIGIT SLICE -2 WILL RETURN ZERO WITH DIGIT 
     ELSE IF DIGIT TWO DIGITS SLICE OFF ZERO SINCE -2 SLICE WILL RETURN LAST TWO IN STRING 
     */
@@ -144,14 +156,4 @@ function displaySixty(time, timeIncrementer) {
     timer.textContent = "60:00";
     timeIncrementer.textContent = "60:00";
   }
-}
-
-function init() {
-  countdown.totalSeconds = 1500;
-  breakCountdown.totalSeconds = 300;
-  currentTime = countdown;
-  stopCountdown();
-  displayTime(timer);
-  displayTime(sessionLength);
-  displayTime(breakLength);
 }
