@@ -1,50 +1,111 @@
+*::before,
+*::after,
 * {
-    box-sizing: border-box;
-    background-color: tomato;
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: tomato;
+  color: #fff;
+  font-size: 1.4rem;
 }
 
 .container {
-    width: 800px;
-    margin: 0 auto;
+  width: 70rem;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .time-length {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 .clock {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid white;
-    height: 300px;
-    width: 300px;
-    border-radius: 50%;
-    margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid #fff;
+  height: 30rem;
+  width: 30rem;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
 .session-length {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .break-length {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  padding: 0.8rem;
+  border-radius: 4rem;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn:active {
+  transform: translateY(0.2rem);
+  box-shadow: 0 0.1rem 0.1rem black;
+}
+
+.break-minus,
+.session-minus,
+.reset {
+  background-color: #c0392b;
+}
+
+.break-add,
+.session-add,
+.play {
+  background-color: #2ecc71;
+}
+
+.pause {
+  background-color: #3498db;
+}
+
+.title {
+  margin-bottom: 1rem;
 }
 
 .time-edit {
-    display: flex;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 40em) {
+  .container {
+    width: 40rem;
+  }
+  .title {
+    order: -2;
+  }
+  .clock {
+    order: -1;
+    margin-bottom: 1rem;
+  }
 }
