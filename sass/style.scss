@@ -1,0 +1,123 @@
+$color-primary: tomato;
+$color-secondary: #e0e3da;
+$color-play: #2ecc71;
+$color-stop: #c0392b;
+$color-pause: #3498db;
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+*::before,
+*::after,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: $color-primary;
+  color: $color-secondary;
+  font-size: 1.4rem;
+
+  span {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.container {
+  width: 70rem;
+  margin: 4rem auto;
+  @include flexColumn;
+  @media only screen and (max-width: 40em) {
+    width: 30rem;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  @media only screen and (max-width: 40em) {
+    order: -2;
+  }
+}
+
+.time-length {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.clock {
+  @include flexColumn;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid $color-secondary;
+  height: 30rem;
+  width: 30rem;
+  border-radius: 50%;
+  margin: 0 auto;
+  @media only screen and (max-width: 40em) {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+}
+
+.session-length {
+  @include flexColumn;
+  align-items: center;
+
+  @media only screen and (max-width: 40em) {
+    margin-bottom: 2rem;
+  }
+}
+
+.break-length {
+  @include flexColumn;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  padding: 0.8rem;
+  border-radius: 4rem;
+  outline: none;
+  cursor: pointer;
+  color: $color-secondary;
+}
+
+.btn:active {
+  transform: translateY(0.2rem);
+  box-shadow: 0 0.1rem 0.1rem black;
+}
+
+.break-minus,
+.session-minus,
+.reset {
+  background-color: $color-stop;
+}
+
+.break-add,
+.session-add,
+.play {
+  background-color: $color-play;
+}
+
+.pause {
+  background-color: $color-pause;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.time-edit {
+  margin-bottom: 1rem;
+}
