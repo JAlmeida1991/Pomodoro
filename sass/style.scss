@@ -38,6 +38,7 @@ body {
   @include flexColumn;
   @media only screen and (max-width: 40em) {
     width: 30rem;
+    margin: 2rem auto;
   }
 }
 
@@ -94,8 +95,8 @@ body {
 }
 
 .btn:active {
-  transform: translateY(0.2rem);
-  box-shadow: 0 0.1rem 0.1rem black;
+  transform: translateY(0.1rem);
+  box-shadow: 0 0.1rem 0.1rem #000;
 }
 
 .break-minus,
@@ -120,4 +121,10 @@ body {
 
 .time-edit {
   margin-bottom: 1rem;
+}
+
+.pause,
+.play,
+.reset {
+  width: 4rem;
 }

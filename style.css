@@ -38,6 +38,7 @@ body span {
 @media only screen and (max-width: 40em) {
   .container {
     width: 30rem;
+    margin: 2rem auto;
   }
 }
 
@@ -143,10 +144,10 @@ body span {
 }
 
 .btn:active {
-  -webkit-transform: translateY(0.2rem);
-          transform: translateY(0.2rem);
-  -webkit-box-shadow: 0 0.1rem 0.1rem black;
-          box-shadow: 0 0.1rem 0.1rem black;
+  -webkit-transform: translateY(0.1rem);
+          transform: translateY(0.1rem);
+  -webkit-box-shadow: 0 0.1rem 0.1rem #000;
+          box-shadow: 0 0.1rem 0.1rem #000;
 }
 
 .break-minus,
@@ -171,5 +172,11 @@ body span {
 
 .time-edit {
   margin-bottom: 1rem;
+}
+
+.pause,
+.play,
+.reset {
+  width: 4rem;
 }
 /*# sourceMappingURL=style.css.map */
