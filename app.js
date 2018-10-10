@@ -1,4 +1,5 @@
-(function() {
+(() => {
+  "use strict";
   // Work session element nodes:
   const timer = document.querySelector(".clock span");
   const play = document.querySelector(".play");

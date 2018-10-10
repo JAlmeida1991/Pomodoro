@@ -1,35 +1,8 @@
-$color-primary: tomato;
-$color-secondary: #e0e3da;
-$color-play: #2ecc71;
-$color-stop: #c0392b;
-$color-pause: #3498db;
+@import "base";
 
 @mixin flexColumn {
   display: flex;
   flex-direction: column;
-}
-*::before,
-*::after,
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-family: "Courier New", Courier, monospace;
-  background-color: $color-primary;
-  color: $color-secondary;
-  font-size: 1.4rem;
-
-  span {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
 }
 
 .container {
@@ -39,6 +12,13 @@ body {
   @media only screen and (max-width: 40em) {
     width: 30rem;
     margin: 2rem auto;
+  }
+
+  .clock span,
+  .session-length span,
+  .break-length span {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -66,6 +46,8 @@ body {
   border-radius: 50%;
   margin: 0 auto;
   @media only screen and (max-width: 40em) {
+    height: 25rem;
+    width: 25rem;
     order: -1;
     margin-bottom: 2rem;
   }
@@ -96,7 +78,6 @@ body {
 
 .btn:active {
   transform: translateY(0.1rem);
-  box-shadow: 0 0.1rem 0.1rem #000;
 }
 
 .break-minus,
