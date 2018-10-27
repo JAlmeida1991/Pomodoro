@@ -26,7 +26,7 @@
 .title {
   display: flex;
   justify-content: center;
-  @media screen and (max-width: 40em) {
+  @media only screen and (max-width: 40em) {
     order: -2;
   }
 }
@@ -46,7 +46,7 @@
   width: 30rem;
   border-radius: 50%;
   margin: 0 auto;
-  @media screen and (max-width: 40em) {
+  @media only screen and (max-width: 40em) {
     height: 25rem;
     width: 25rem;
     order: -1;
