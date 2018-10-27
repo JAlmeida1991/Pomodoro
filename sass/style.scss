@@ -11,7 +11,7 @@
   @include flexColumn;
   @media only screen and (max-width: 40em) {
     width: 30rem;
-    margin: 2rem auto;
+    margin: 1rem auto;
   }
 
   .clock span,
@@ -19,13 +19,14 @@
   .break-length span {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 }
 
 .title {
   display: flex;
   justify-content: center;
-  @media only screen and (max-width: 40em) {
+  @media screen and (max-width: 40em) {
     order: -2;
   }
 }
@@ -45,7 +46,7 @@
   width: 30rem;
   border-radius: 50%;
   margin: 0 auto;
-  @media only screen and (max-width: 40em) {
+  @media screen and (max-width: 40em) {
     height: 25rem;
     width: 25rem;
     order: -1;

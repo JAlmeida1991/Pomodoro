@@ -1,4 +1,4 @@
-(() => {
+(function() {
   "use strict";
   // Work session element nodes:
   const timer = document.querySelector(".clock span");
@@ -15,7 +15,7 @@
   const breakAdd = document.querySelector(".break-add");
 
   // AUDIO FOR TRANSITION
-  const audio = new Audio("audio/Bepp-beep.mp3");
+  const audio = new Audio("audio/beep.mp3");
 
   // NEEDED TO ASSIGN SET TIMEOUT TO AS GLOBAL VARIABLE IN ORDER TO CLEAR IT
   let interval;
