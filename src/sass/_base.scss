@@ -1,19 +1,14 @@
-$color-primary: tomato;
-$color-secondary: #e0e3da;
-$color-play: #2ecc71;
-$color-stop: #c0392b;
-$color-pause: #3498db;
-
 *::before,
 *::after,
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: inherit;
 }
 
 html {
   font-size: 62.5%;
+  box-sizing: border-box;
 }
 
 body {

@@ -1,0 +1,9 @@
+.container {
+  width: 70rem;
+  margin: 4rem auto;
+  @include flexColumn;
+  @media only screen and (max-width: 40em) {
+    width: 30rem;
+    margin: 1rem auto;
+  }
+}

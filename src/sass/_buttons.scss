@@ -1,0 +1,34 @@
+.btn {
+  border: none;
+  padding: 0.8rem;
+  border-radius: 4rem;
+  outline: none;
+  cursor: pointer;
+  color: $color-secondary;
+
+  &:active {
+    transform: translateY(0.1rem);
+  }
+}
+
+.break-minus,
+.session-minus,
+.reset {
+  background-color: $color-stop;
+}
+
+.break-add,
+.session-add,
+.play {
+  background-color: $color-play;
+}
+
+.pause {
+  background-color: $color-pause;
+}
+
+.pause,
+.play,
+.reset {
+  width: 4rem;
+}

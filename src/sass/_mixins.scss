@@ -1,0 +1,10 @@
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin timeFormat {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
